@@ -37,7 +37,8 @@ namespace Expense_Tracker
                 amount = decimal.Parse(Console.ReadLine());
             }catch(FormatException)
             {
-                Console.WriteLine("Enter only integer value");
+                Console.WriteLine("Wrong Input!!!  Enter only integer value");
+                return;
             }
 
             DateTime date = new DateTime();
@@ -47,7 +48,8 @@ namespace Expense_Tracker
                 date = DateTime.Parse(Console.ReadLine());
             }catch (Exception)
             {
-                Console.WriteLine("Enter Correct Date Format. Example : 04/05/2023");
+                Console.WriteLine("Wrong Input!!!  Enter Correct Date Format. Example : 04/05/2023");
+                return;
             }
             
             if (amount >= 0)
@@ -62,7 +64,6 @@ namespace Expense_Tracker
             transactions.Add(new Transaction() {Title = title, Description = description, Amount = amount, Date = date });
 
             Console.WriteLine("Transaction Added Successfully");
-            Console.WriteLine();
         }
 
         public void View_Expenses()
@@ -145,7 +146,7 @@ namespace Expense_Tracker
                         }
                     default:
                         {
-                            Console.WriteLine("Invalid Choice");
+                            Console.WriteLine("Wrong Choice Entered");
                             break;
                         }
                 }
