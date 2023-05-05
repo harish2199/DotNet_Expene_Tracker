@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualBasic;
+using System.Reflection.Metadata.Ecma335;
 
 namespace Expense_Tracker
 {
@@ -23,13 +24,32 @@ namespace Expense_Tracker
 
         public void Add_Transaction()
         {
+            string title = "";
+            string description = "";
+            try
+            {
+                Console.Write("Enter Title: ");
+                title = Console.ReadLine();
+                if (string.IsNullOrEmpty(title))
+                {
+                    throw new EmptyException();
+                }
 
-            Console.Write("Enter Title: ");
-            string title = Console.ReadLine();
+                Console.Write("Enter Description: ");
+                description = Console.ReadLine();
+                if (string.IsNullOrEmpty(description))
+                {
+                    throw new EmptyException();
+                }
 
-            Console.Write("Enter Description: ");
-            string description = Console.ReadLine();
-            
+            }
+            catch (EmptyException)
+            {
+                Console.WriteLine("Feild can not be Empty");
+                return;
+            }
+
+
             decimal amount = 0;
             try
             {
